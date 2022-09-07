@@ -1,12 +1,13 @@
 package Jframe;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.event.*;
 
 public class ComboBox2 extends JFrame implements ItemListener {
     private JComboBox<String> pais;
     private JComboBox<String> estado;
-    private JComboBox<String> municipio;
 
     private String[] arr_paises = { "Mexico", "Estados Unidos", "Cuba" };
     private String[] arr_estadoM = { "Aguascalientes", "Baja California", "Campeche", "Chiapas", "Chihuahua",
@@ -18,9 +19,16 @@ public class ComboBox2 extends JFrame implements ItemListener {
             "Provincia de Santiago de Cuba." };
 
     public ComboBox2() {
+        initComponents();
+        setResizable(false);
+        setBounds(0, 0, 400, 500);
+        setLocationRelativeTo(null);
+        // setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
 
-        setLayout(null);
-
+    public void initComponents() {
         pais = new JComboBox<String>();
         pais.setBounds(10, 10, 200, 20);
         pais.addItemListener(this);
@@ -30,14 +38,17 @@ public class ComboBox2 extends JFrame implements ItemListener {
         estado.setBounds(10, 40, 200, 20);
         add(estado);
 
-        municipio = new JComboBox<String>();
-        municipio.setBounds(10, 80, 200, 20);
-        add(municipio);
-
         for (String temporal : arr_paises) {
             pais.addItem(temporal);
         }
 
+        JLabel imagen = new JLabel(new ImageIcon("1.jpg"));
+        // JLabel imagen = new JLabel("HOLA");
+        imagen.setBounds(10, 80, getWidth(), getHeight());
+        add(imagen);
+
+
+        // imagen = new JLabel(new ImageIcon("img/"+ (String) pais.getSelectedItem()+".jpg"));
     }
 
     public void itemStateChanged(ItemEvent e) {
@@ -48,6 +59,7 @@ public class ComboBox2 extends JFrame implements ItemListener {
     }
 
     public void Elegir_Estado() {
+
         if ((String) pais.getSelectedItem() == "Mexico") {
             for (String temporal : arr_estadoM) {
                 estado.addItem(temporal);
@@ -67,11 +79,11 @@ public class ComboBox2 extends JFrame implements ItemListener {
         }
     }
 
+    public void colocar_bandera() {
+
+    }
+
     public static void main(String[] args) {
-        // se crea un panel se le da dimenciones, se hace visible
         ComboBox2 f1 = new ComboBox2();
-        f1.setBounds(0, 0, 400, 150);
-        f1.setVisible(true);
-        f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // especificar accion de cierre
     }
 }
