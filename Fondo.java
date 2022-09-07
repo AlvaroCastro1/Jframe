@@ -14,9 +14,13 @@ public class Fondo extends JFrame {
         this.setSize(750,400);
         setLocationRelativeTo(null);
         this.getContentPane().setLayout(new GridLayout(1,3,5,5));
+        agregarImg();
+    }
+
+    public void agregarImg() {
         JLabel l1 = new JLabel();
         l1.setSize(100,100);
-        ImageIcon imagen = new ImageIcon("img/Cuba.jpg");
+        ImageIcon imagen = new ImageIcon("img/Mexico.jpg");
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(l1.getWidth(), l1.getHeight(), Image.SCALE_DEFAULT));
 
         l1.setIcon(icono);
